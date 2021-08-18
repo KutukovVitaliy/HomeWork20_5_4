@@ -1,6 +1,16 @@
 #include <iostream>
+#include <vector>
+#include <ctime>
+#include "functions.h"
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::srand(std::time(nullptr));
+    const int BankSize = 30;
+    const char* FileName = "../bank.bin";
+
+    AddBanknotes(FileName, BankSize);
+    GetBanknotes(FileName,1200);
+
     return 0;
 }
