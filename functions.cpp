@@ -29,6 +29,10 @@ void AddBanknotes(const char* FileName, int BankSize){
             OutFile.write((char*) &bank[i], sizeof (bank[i]));//Записываем купюру в файл
         }
         OutFile.close();//Закрываем файл
+#ifdef DEBUG
+        for(int el : bank) std::cout << el << " ";
+        std::cout << std::endl;
+#endif
     }
     else{
         std::ofstream OutFile(FileName, std::ios::binary);//если файл не существует, то создаем и заполняем новый
@@ -42,6 +46,10 @@ void AddBanknotes(const char* FileName, int BankSize){
             OutFile.write((char*) &bank[i], sizeof (bank[i]));//Записываем купюру в файл
         }
         OutFile.close();//Закрываем файл
+#ifdef DEBUG
+        for(int el : bank) std::cout << el << " ";
+        std::cout << std::endl;
+#endif
     }
     return;
 }
@@ -68,8 +76,10 @@ void GetBanknotes(const char* FileName, int Sum){
         bank.push_back(tmp);// Заполняем вектор купюрами из файла
     }
     std::sort(bank.begin(),bank.end());//Сортируем купюры в векторе для выдачи суммы крупными купюрами
-    for(int el : bank) std::cout << el << " ";
-    std::cout << std::endl;
+#ifdef DEBUG
+     for(int el : bank) std::cout << el << " ";
+     std::cout << std::endl;
+#endif
     for(int i = bank.size()-1; i >=0 ; --i){
         if((Sum - bank[i]) >= 0){   //Если банкнота меньше или равна требуемой сумме
             SumBanknotes.push_back(bank[i]); //Заносим ее в вектор для выдачи
