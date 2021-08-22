@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <ctime>
 #include "functions.h"
 
@@ -7,38 +6,38 @@
 
 int main() {
     std::srand(std::time(nullptr));
-    int BankSize = 1000;
+    int bankSize = 1000;
 #ifdef DEBUG
-    BankSize = 30;
+    bankSize = 30;
 #endif
-    const char* FileName = "../bank.bin";
-    std::string Operation;
-    bool InputIsCorrect;
+    std::string fileName = "../bank.bin";
+    std::string operation;
+    bool inputIsCorrect;
 
     do{
         std::cout << "Enter operation ('+' or '-'): ";
-        std::cin >> Operation;
-        if(Operation == "+" || Operation == "-") {
-            InputIsCorrect = true;
+        std::cin >> operation;
+        if(operation == "+" || operation == "-") {
+            inputIsCorrect = true;
         }
         else{
-            std::cout << "Operation not allowed! Try again!" << std::endl;
-            InputIsCorrect = false;
+            std::cout << "operation not allowed! Try again!" << std::endl;
+            inputIsCorrect = false;
         }
-    } while (!InputIsCorrect);
-    if(Operation == "+") AddBanknotes(FileName, BankSize);
-    else if(Operation == "-"){
+    } while (!inputIsCorrect);
+    if(operation == "+") AddBanknotes(fileName, bankSize);
+    else if(operation == "-"){
         int amount;
         do{
-            InputIsCorrect = true;
+            inputIsCorrect = true;
             std::cout << "Input amount (amount must be a multiple of 100): ";
             std::cin >> amount;
             if((amount % 100) != 0) {
-                InputIsCorrect = false;
+                inputIsCorrect = false;
                 std::cout << "Amount not allowed! Try again!" << std::endl;
             }
-        }while(!InputIsCorrect);
-        GetBanknotes(FileName,amount);
+        }while(!inputIsCorrect);
+        GetBanknotes(fileName, amount);
     }
 
 

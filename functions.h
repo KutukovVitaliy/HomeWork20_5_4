@@ -9,9 +9,10 @@
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
+#include <string>
 
 //#define DEBUG
 
-void AddBanknotes(const char* FileName, int BankSize);
-void GetBanknotes(const char* FileName, int Sum);
+void AddBanknotes(std::string& fileName, int bankSize);
+void GetBanknotes(std::string& fileName, int sum);
 #endif //HOMEWORK20_5_4_FUNCTIONS_H
